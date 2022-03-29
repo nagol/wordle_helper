@@ -7,3 +7,5 @@ By taking the puzzle output as inputs, we can filter this dictionary for words t
 and sort by how common the word is.
 
 The data used is from [Kaggle](https://www.kaggle.com/datasets/rtatman/english-word-frequency)
+
+Check out the app on [Streamlit Cloud](https://share.streamlit.io/nagol/wordle_helper/wordle_app.py)

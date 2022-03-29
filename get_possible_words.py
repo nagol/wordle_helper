@@ -9,22 +9,11 @@
 #                           -> Generates contains(letter) and word[position] != letter
 
 
-import pandas as pd
-
-# Load data with word, word freq over trillion word coupus
-word_dictionary = pd.read_csv("./unigram_freq.csv")
-
-# remove null words
-word_dictionary = word_dictionary[word_dictionary.word.notnull()]
-
-# create column with word lengths
-word_dictionary['word_length'] = word_dictionary.word.str.len().astype(int)
-word_dictionary['distinct_letters'] = word_dictionary.word.apply(lambda x: len(set(x)))
 
 
 
 def get_possible_words(
-    english_dictionary = word_dictionary,
+    english_dictionary,
     word_length = 5, 
     contains_list = [], 
     does_not_contain_list = [], 
@@ -84,15 +73,17 @@ def get_possible_words(
     print(f"Here are the top 50 based on the information provided:")
     print(english_dictionary.head(50))
 
+    return english_dictionary
+
 # Example usage
-print(
-    get_possible_words(
-        word_length = 5,
-        contains_list = ['a', 'o', 'r'],
-        does_not_contain_list = ['d','e','h','t','l','c','m','j'],
-        position_known_dict = {2:'a', 4:'o', 5:'r'}, 
-        position_not_known_dict = {2: ['o'], 3:['a'], 4:['a']}
-        )
-)
+# print(
+#     get_possible_words(
+#         word_length = 10,
+#         contains_list = ['i','r','s','t','y'],
+#         does_not_contain_list = ['u','n','v','e'],
+#         position_known_dict = {8:'i',9:'t',10:'y'}, 
+#         position_not_known_dict = {3:['i'], 6:['r'], 7:['s']}
+#         )
+# )
 
 
